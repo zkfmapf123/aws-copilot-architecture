@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  payment:
+    build:
+      context: ./server-payment
+      dockerfile: Dockerfile
+    environment:
+      - PORT=3000
+    ports:
+      - 3000:3000
+    networks:
+      nw:
+        ipv4_address: 10.0.0.20
+
+  receipt:
+    build:
+      context: ./server-receipt
+      dockerfile: Dockerfile
+    environment:
+      - PORT=3001
+    ports:
+      - 3001:3001
+    networks:
+      nw:
+        ipv4_address: 10.0.0.21
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    environment:
+      - PORT=2999
+      - PAYMENT_HOST=10.0.0.20
+      - PAYMENT_PORT=3000
+      - RECEIT_HOST=10.0.0.21
+      - RECEIT_PORT=3001
+    ports:
+      - 2999:2999
+    networks:
+      - nw
+
+networks:
+  nw:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.0.0/16
+          gateway: 10.0.0.1
