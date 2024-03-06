@@ -1,10 +1,14 @@
 # AWS Copilot Architecture
 
+![architecture](./architecture.png)
+
 ## Folders 
 
 ```sh
     |- applications     ## Applications 
-        |- ...
+        |- client
+        |- payment  
+        |- receipt
     |- lib
         |- utils        ##  개발에 필요한 Tools
         |- vpcs         ## VPC Setting
