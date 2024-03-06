@@ -11,7 +11,7 @@
     "cdk": "cdk",
     "sync": "cdk synth > sync.yml",
     "start": "cdk bootstrap && cdk deploy",
-    "destroy": "cdk destory"
+    "destroy": "cdk destroy"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
