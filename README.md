@@ -45,3 +45,4 @@
 
 - <a href="https://cdkworkshop.com/20-typescript/20-create-project/300-structure.html"> AWS CDK Workshop </a>
 - <a href="https://aws.github.io/copilot-cli/docs/getting-started/install/"> AWS Copilot CLI </a>
+- <a href="https://github.com/aws-samples/aws-cdk-examples/blob/master/typescript/neptune-with-vpc/neptune-with-vpc-stack.ts"> Typescript CDK Exasmple </a>

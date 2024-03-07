@@ -3,7 +3,7 @@ import { Stack } from 'aws-cdk-lib'
 import * as ec2 from 'aws-cdk-lib/aws-ec2'
 import { Construct } from 'constructs'
 import { inspectFunc } from '../utils/fp'
-import { StackParams } from '../utils/stack'
+import { IStack, StackParams } from '../utils/stack'
 
 interface Props extends StackParams {
   vpcCidr: string
@@ -14,7 +14,7 @@ interface Props extends StackParams {
   enableDNSSupport?: boolean
 }
 
-export class PrivateVPCStack extends Stack {
+export class PrivateVPCStack extends Stack implements IStack<ec2.Vpc, Props> {
   constructor(scope: Construct, id: string, props: Props) {
     super(scope, id, props)
 
@@ -31,11 +31,11 @@ export class PrivateVPCStack extends Stack {
       throw new Error('Invalid VPC Create Errro')
     }
 
-    const vpc = this.setVPCOption(this, props)
+    const vpc = this.create(this, props)
     this.setOutputs(vpc)
   }
 
-  private setVPCOption(scope: Construct, props: Props): ec2.Vpc {
+  create(scope: Construct, props: Props): ec2.Vpc {
     const { vpcCidr, region, azs, natGateway, enableDNSSupport, enableDnsHostname, tags } = props
 
     // Create VPC
