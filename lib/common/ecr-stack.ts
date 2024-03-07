@@ -10,12 +10,12 @@ export class ECRStack extends Stack implements IStack<ecr.Repository, Props> {
   constructor(scope: Construct, id: string, props: Props) {
     super(scope, id, props)
 
-    const repository = this.create(this, props)
+    const repository = this.create(props)
     this.setOutputs(repository)
   }
 
-  create(scope: this, { tags }: Props): ecr.Repository {
-    const repository = new ecr.Repository(scope, tags.Name, {
+  create({ tags }: Props): ecr.Repository {
+    const repository = new ecr.Repository(this, tags.Name, {
       repositoryName: tags.Name,
     })
 

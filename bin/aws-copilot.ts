@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import * as cdk from 'aws-cdk-lib'
-import { ECRStack } from '../lib/ecrs'
+import { ECRStack } from '../lib/common'
 import { PrivateVPCStack } from '../lib/vpcs'
 
 const app = new cdk.App()

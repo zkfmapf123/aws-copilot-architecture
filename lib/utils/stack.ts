@@ -9,6 +9,6 @@ export interface StackParams {
 }
 
 export interface IStack<T, P> {
-  create(scope: this, props: P): T
+  create(props: P): T
   setOutputs(resource: T): void
 }

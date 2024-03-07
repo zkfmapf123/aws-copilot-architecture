@@ -1,6 +1,7 @@
 FROM node:18-alpine
 
 WORKDIR /usr/src/app
+RUN apk --no-cache add curl
 
 COPY . .
 

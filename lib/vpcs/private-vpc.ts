@@ -31,15 +31,15 @@ export class PrivateVPCStack extends Stack implements IStack<ec2.Vpc, Props> {
       throw new Error('Invalid VPC Create Errro')
     }
 
-    const vpc = this.create(this, props)
+    const vpc = this.create(props)
     this.setOutputs(vpc)
   }
 
-  create(scope: Construct, props: Props): ec2.Vpc {
+  create(props: Props): ec2.Vpc {
     const { vpcCidr, region, azs, natGateway, enableDNSSupport, enableDnsHostname, tags } = props
 
     // Create VPC
-    const vpc = new ec2.Vpc(scope, tags.Name, {
+    const vpc = new ec2.Vpc(this, tags.Name, {
       vpcName: tags.Name,
       ipAddresses: ec2.IpAddresses.cidr(vpcCidr),
       maxAzs: azs.length,
