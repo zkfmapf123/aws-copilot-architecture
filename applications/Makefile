@@ -3,7 +3,7 @@ dev-deploy:
 	@copilot svc deploy --name receipt --env dev
 	@copilot svc deploy --name client --env dev
 
-dev-destory:
-	@copilot svc delete client
-	@copilot svc delete receipt
-	@copilot svc delete payment
+dev-destroy:
+	@copilot svc delete --name client --env dev
+	@copilot svc delete --name receipt --env dev
+	@copilot svc delete --name payment --env dev
